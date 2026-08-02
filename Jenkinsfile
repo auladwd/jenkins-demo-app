@@ -12,24 +12,21 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Node.js dependencies...'
-                bat 'npm install'
+                sh 'npm install'        // ✅ bat → sh
             }
         }
 
         stage('Run Tests') {
             steps {
                 echo 'Running test suite...'
-                bat 'npm test'
+                sh 'npm test'           // ✅ bat → sh
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                bat 'echo Deployment successful! App is running.'
-                // For Docker deployment:
-                // bat 'docker build -t jenkins-demo-app .'
-                // bat 'docker run -d -p 3000:3000 jenkins-demo-app'
+                sh 'echo Deployment successful!'   // ✅ bat → sh
             }
         }
     }
